@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Register Here</title>
+</head>
+<body>
+<h1>Please register</h1>
+{% if messages %}
+    {% for message in messages %}
+        <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+    {% endfor %}
+{% endif %}
+<form action="{% url 'dashregister' %}" method='post'>
+    {% csrf_token %}
+    First Name:<input type="text" name='first_name'><br>
+    Last Name:<input type="text" name='last_name'><br>
+    Email:<input type="text" name='email'><br>
+    Password<input type="password" name='password'><br>
+    Confirm Password<input type="password" name="password_confirm"><br>
+    <input type="submit" value="Register"><br>
+</form>
+</body>
+</html>

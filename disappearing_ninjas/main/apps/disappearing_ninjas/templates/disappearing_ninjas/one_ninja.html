@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>One Ninja at a time</title>
+</head>
+<body>
+    {% load staticfiles %}
+    {% for image in color %}
+    <!-- each image in the list -->
+        <img src="{% static 'disappearing_ninjas/images/' %}{{image}}"/>
+                                                        <!--the variable that you are looping through from color -->
+    {% endfor %}
+</body>
+</html>

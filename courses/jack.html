@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Products</title>
+	</head>
+	<body>
+		<h1>Products</h1>
+		<table>
+			<tr>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Price</th>
+				<th>Update</th>
+				<th>Created At</th>
+				<th>Updated At</th>
+				<th>Delete</th>
+			</tr>
+			{% for product in products %}
+				<tr>
+					<form action="/update/{{product.id}}" method="post">
+						{% csrf_token %}
+						<td>{{product.id}}</td>
+						<td><input type="text" name="name" value="{{product.name}}"></td>
+						<td>$<input type="number" name="price" value="{{product.price}}"></td>
+						<td><input type="submit" value="Update"></td>
+					</form>
+					<td>{{product.created_at}}</td>
+					<td>{{product.updated_at}}</td>
+					<td><a href="/delete/{{product.id}}">Delete</a></td>
+				</tr>
+			{% endfor %}
+		</table>
+		<h1>New Product</h1>
+		<form action="/create" method="post">s
+			{% csrf_token %}
+			<p>Name: <input type="text" name="name"></p>
+			<p>Price: <input type="number" name="price"></p>
+			<p><input type="submit" value="Create"></p>
+		</form>
+	</body>
+</html>

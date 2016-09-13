@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DESTROY!!!!</title>
+</head>
+<body>
+    <h1>Destroy Page</h1>
+    {{course.course_name}}
+    {{course.course_description}}
+    <a href="/"><button>No!</button></a>
+
+    <form action = "{% url 'delete' %}" method = "post">
+        {% csrf_token %}
+        <input type = "submit" name="course_id" value="yes">
+        <input type = "hidden" name="course_id" value="{{course.id}}">
+    </form>
+</body>
+</html>
